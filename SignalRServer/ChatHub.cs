@@ -5,9 +5,8 @@ namespace SignalRServer
 {
     public class ChatHub : Hub
     {
-        public async Task SayHello()
+        public void SayHello()
         {
-            await Clients.All.SendAsync("Hello");
         }
     }
 }

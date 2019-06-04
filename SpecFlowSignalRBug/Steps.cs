@@ -3,8 +3,6 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using SignalRServer;
 using TechTalk.SpecFlow;
 
@@ -15,7 +13,6 @@ namespace SpecFlowSignalRBug
     {
         private HubConnection _signalrConnection;
         private TestServer _server;
-        private bool _wasHelloEventCalled;
 
         [Given(@"SignalR server is running")]
         public void GivenSignalRServerIsRunning()
@@ -53,8 +50,6 @@ namespace SpecFlowSignalRBug
                     o => o.HttpMessageHandlerFactory = _ => _server.CreateHandler())
                 .Build();
 
-            _signalrConnection.On("Hello", () => { _wasHelloEventCalled = true; });
-
             await _signalrConnection.StartAsync();
         }
 
@@ -63,13 +58,10 @@ namespace SpecFlowSignalRBug
             await _signalrConnection.InvokeAsync("SayHello");
         }
 
-        [Then(@"an event should raise")]
-        public async Task ThenAnEventShouldRaise()
+        [Then(@"this step should be called")]
+        public void ThenThisStepShouldBeCalled()
         {
-            await Task.Delay(1000); // must wait a bit
-
-            _wasHelloEventCalled.Should().BeTrue();
+            true.Should().BeTrue();
         }
-
     }
 }

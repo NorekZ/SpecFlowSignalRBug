@@ -92,7 +92,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
  testRunner.When("I establish SignalR connection and invoke method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 7
- testRunner.Then("an event should raise", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("this step should be called", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -115,7 +115,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 13
  testRunner.When("I invoke method on the connection", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
- testRunner.Then("an event should raise", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("this step should be called", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
